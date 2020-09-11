@@ -5,7 +5,7 @@ describe('actions', () => {
     const initialState = {
         user: {
             name: null,
-            title: null,
+            role: null,
             email: null,
             password: null,
         },
@@ -18,12 +18,12 @@ describe('actions', () => {
     test('state is updated with UPDATE_PRIVACY action', () => {
         expect.assertions(1);
 
-        const res = rootReducer(initialState, {type: UPDATE_PRIVACY, privacy: { updates: true, communication: true }});
+        const res = rootReducer(initialState, { type: UPDATE_PRIVACY, privacy: { updates: true, communication: true }});
 
         expect(res).toStrictEqual({ 
             user: {
                 name: null,
-                title: null,
+                role: null,
                 email: null,
                 password: null,
             },
@@ -36,12 +36,12 @@ describe('actions', () => {
     test('state is updated with UPDATE_USER action', () => {
         expect.assertions(1);
 
-        const res = rootReducer(initialState, { type: UPDATE_USER, user: { name: 'Billy', title: "Coder", email: 'email@hotmail.com', password: 'password123' }});
+        const res = rootReducer(initialState, { type: UPDATE_USER, user: { name: 'Billy', role: "Coder", email: 'email@hotmail.com', password: 'password123' }});
 
         expect(res).toStrictEqual({ 
             user: {
                 name: 'Billy',
-                title: 'Coder',
+                role: 'Coder',
                 email: 'email@hotmail.com',
                 password: 'password123',
             },

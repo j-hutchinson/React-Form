@@ -4,7 +4,7 @@ import { ActionType, ReduxState } from '../../types'
 const initialState: ReduxState = {
     user: {
         name: null,
-        title: null,
+        role: null,
         email: null,
         password: null,
     },
@@ -29,7 +29,7 @@ function rootReducer(state = initialState, action: ActionType): ReduxState {
         ...state,
         user: {
             name: action.user.name,
-            title: action.user.title,
+            role: action.user.role,
             email: action.user.email,
             password: action.user.password,
         }

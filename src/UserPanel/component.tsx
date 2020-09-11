@@ -39,14 +39,14 @@ export const passwordValidation = (password: string): boolean => {
 
 const UserPanel = ({ onDoneClick }: Props): JSX.Element => {
     const [name, setName] = useState<string>('');
-    const [title, setTitle] = useState<string>('');
+    const [role, setRole] = useState<string>('');
     const [email, setEmail] = useState<string>('');
     const [password, setPassword] = useState<string>('');
     const [error, setError] = useState<boolean>(false);
 
     const onSubmission = (ev) => {
         if (passwordValidation(password)) {
-            store.dispatch(updateUser({ name, title, email, password }));
+            store.dispatch(updateUser({ name, role, email, password }));
             onDoneClick();
         } else {
             ev.preventDefault();
@@ -61,8 +61,8 @@ const UserPanel = ({ onDoneClick }: Props): JSX.Element => {
                 <input type="text" value={name} onChange={(ev) => setName(ev.target.value)} required />
             </StyledLabel>
             <StyledLabel>
-                Title:
-                <input type="text" value={title} onChange={(ev) => setTitle(ev.target.value)} />
+                Role:
+                <input type="text" value={role} onChange={(ev) => setRole(ev.target.value)} />
             </StyledLabel>
             <StyledLabel>
                 <div> Email: <StyledAsterisk>*</StyledAsterisk> </div>

@@ -12,7 +12,7 @@ export interface ReduxState {
 
 export interface UserSettings {
     name: string;
-    title: string;
+    role: string;
     email: string;
     password: string
 }

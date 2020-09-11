@@ -20,7 +20,7 @@ exports[`UserPanel component component matches snapshot 1`] = `
     />
   </styled.label>
   <styled.label>
-    Title:
+    Role:
     <input
       onChange={[Function]}
       type="text"

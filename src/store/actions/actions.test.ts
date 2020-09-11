@@ -16,13 +16,13 @@ describe('actions', () => {
     test('updateUser', () => {
         expect.assertions(1);
 
-        const res = updateUser({name: 'Billy', title: "Coder", email: 'email@hotmail.com', password: 'password123'});
+        const res = updateUser({name: 'Billy', role: "Coder", email: 'email@hotmail.com', password: 'password123'});
 
         expect(res).toStrictEqual({ 
             type: "UPDATE_USER",
             user: {
                 name: 'Billy',
-                title: 'Coder',
+                role: 'Coder',
                 email: 'email@hotmail.com',
                 password: 'password123',
             }});

@@ -38,7 +38,7 @@ describe('UserPanel component', () => {
         expect(store.dispatch).toHaveBeenCalledWith({
             user: {
                 name: 'Jack Hutchinson',
-                title: 'Coder',
+                role: 'Coder',
                 email: 'email@email.com',
                 password: 'ValidPassword123'
             },
@@ -47,7 +47,7 @@ describe('UserPanel component', () => {
         expect(onDoneClick).toHaveBeenCalledTimes(1);
     });
 
-    test('Store is updated with missing title', () => {
+    test('Store is updated with missing role', () => {
         expect.assertions(3);
 
         const wrapper = shallow(<UserPanel onDoneClick={onDoneClick} />);
@@ -62,7 +62,7 @@ describe('UserPanel component', () => {
         expect(store.dispatch).toHaveBeenCalledWith({
             user: {
                 name: 'Jack Hutchinson',
-                title: null,
+                role: null,
                 email: 'email@email.com',
                 password: 'ValidPassword123'
             },
