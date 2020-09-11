@@ -2,6 +2,9 @@
 
 exports[`DonePanel component component matches snapshot 1`] = `
 <styled.div>
+  <styled.div>
+    <TickIcon />
+  </styled.div>
   Please verify your email address, you should have received an email from us today
 </styled.div>
 `;

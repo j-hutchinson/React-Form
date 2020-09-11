@@ -39,6 +39,9 @@ const StyledSubmitInput = styled.input`
    ${SubmitInputStyles};
 `;
 
+/*
+*  Check if password contains a digit, a lower case letter, an upper case letter, and greater than or equal to 9 characters in length
+*/
 export const passwordValidation = (password: string): boolean => {
     return /\d/.test(password) && /[a-z]/.test(password) && /[A-Z]/.test(password) && password.length >= 9
 }
