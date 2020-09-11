@@ -12,7 +12,7 @@ exports[`UserPanel component component matches snapshot 1`] = `
       </styled.div>
        
     </div>
-    <input
+    <styled.input
       onChange={[Function]}
       required={true}
       type="text"
@@ -21,7 +21,7 @@ exports[`UserPanel component component matches snapshot 1`] = `
   </styled.label>
   <styled.label>
     Role:
-    <input
+    <styled.input
       onChange={[Function]}
       type="text"
       value=""
@@ -35,7 +35,7 @@ exports[`UserPanel component component matches snapshot 1`] = `
       </styled.div>
        
     </div>
-    <input
+    <styled.input
       onChange={[Function]}
       required={true}
       type="email"
@@ -50,7 +50,7 @@ exports[`UserPanel component component matches snapshot 1`] = `
       </styled.div>
        
     </div>
-    <input
+    <styled.input
       onChange={[Function]}
       required={true}
       type="password"

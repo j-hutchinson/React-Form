@@ -1,7 +1,6 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import styled from 'styled-components';
-
 import FormBody from '../FormBody/component';
 import FormTabs from '../FormTabs/component';
 import Header from '../Header/component';
@@ -34,7 +33,7 @@ export const App = ({ activePage }: Props): JSX.Element => (
     </StyledApp>
 );
 
-const mapStateToProps = (state: ReduxState): Props => ({
+export const mapStateToProps = (state: ReduxState): Props => ({
     activePage: state.page
 })
 

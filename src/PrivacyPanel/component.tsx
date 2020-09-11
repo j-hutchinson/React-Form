@@ -1,11 +1,11 @@
 import React, { FormEvent, KeyboardEvent, useState } from 'react';
 import styled from 'styled-components';
-import { PanelStyles, SubmitInputStyles } from '../css/tokens'
-import store from '../store/store'
+import { PanelStyles, SubmitInputStyles } from '../css/tokens';
 import { updatePrivacy } from '../store/actions/actions';
+import store from '../store/store';
 
 interface Props {
-    onDoneClick: () => void;
+    nextPanel: () => void;
 }
 
 export const StyledPanel = styled.form`
@@ -13,13 +13,13 @@ export const StyledPanel = styled.form`
 `;
 
 export const StyledBox = styled.div`
-    height: 20px;
-    width: 20px;
     border: 1px solid #B9B9B9;
     border-radius: 1px;
-    padding: 4px 0 4px 2px;
     color: #737373;
     display: inline-block;
+    height: 20px;
+    width: 20px;
+    padding: 2px 0 2px 6px;
     margin-right: 8px;
 
     :hover {
@@ -27,7 +27,9 @@ export const StyledBox = styled.div`
     }
 `;
 
-const StyledLabel = styled.div``;
+const StyledLabel = styled.div`
+    padding-top: 4px;
+`;
 
 const StyledButtonWrapper = styled.div`
     display: flex;
@@ -53,26 +55,23 @@ const ConfirmIcon = () => (
     </svg>
 );
 
-const PrivacyPanel = ({ onDoneClick }: Props): JSX.Element => {
+const PrivacyPanel = ({ nextPanel }: Props): JSX.Element => {
     const [activeUpdates, setUpdates] = useState<boolean>(false);
     const [activeComms, setComms] = useState<boolean>(false);
 
     const onSubmit = (ev: FormEvent): void => {
         ev.preventDefault();
         store.dispatch(updatePrivacy({ updates: activeUpdates, communication: activeComms }));
-        onDoneClick();
+        nextPanel();
     }
 
     const onKeyDownUpdates = (ev: KeyboardEvent): void => {
-        if (ev.keyCode === 13) {
-            setUpdates(!activeUpdates);
-        }
+        if (ev.keyCode === 13) setUpdates(!activeUpdates)
     }
 
     const onKeyDownComms = (ev: KeyboardEvent): void => {
-        if (ev.keyCode === 13) {
-            setComms(!activeComms);
-        }
+        if (ev.keyCode === 13) setComms(!activeComms)
+
     }
 
     return (
@@ -88,7 +87,9 @@ const PrivacyPanel = ({ onDoneClick }: Props): JSX.Element => {
                 >
                     {activeUpdates && <ConfirmIcon />}
                 </StyledBox>
-                <StyledLabel id="update-label">Receive updates about Tray.io product by email</StyledLabel>
+                <StyledLabel id="update-label">
+                    Receive updates about Tray.io product by email
+                </StyledLabel>
             </StyledBoxContainer>
             <StyledBoxContainer>
                 <StyledBox
@@ -101,7 +102,9 @@ const PrivacyPanel = ({ onDoneClick }: Props): JSX.Element => {
                 >
                     {activeComms && <ConfirmIcon />}
                 </StyledBox>
-                <StyledLabel id="communication-label">Receive communcations by email from other products created by the Tray.io team</StyledLabel>
+                <StyledLabel id="communication-label">
+                    Receive communications by email from other products created by the Tray.io team
+                </StyledLabel>
             </StyledBoxContainer>
             <StyledButtonWrapper>
                 <StyledSubmitInput type="submit" value="Submit" />

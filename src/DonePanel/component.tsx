@@ -1,7 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
-import { PanelStyles } from '../css/tokens'
-import store from '../store/store'
+import { PanelStyles } from '../css/tokens';
+import store from '../store/store';
 
 const StyledPanel = styled.div`
     ${PanelStyles};

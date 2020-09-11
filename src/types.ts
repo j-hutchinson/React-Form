@@ -4,7 +4,7 @@ export enum FormState {
     DONE = 'Done',
 }
 
-export const formTabsList = [FormState.USER, FormState.PRIVACY, FormState.DONE]
+export const formItems = [FormState.USER, FormState.PRIVACY, FormState.DONE];
 
 export interface ActionType {
     type: string;

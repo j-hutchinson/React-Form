@@ -1,14 +1,12 @@
 import { shallow } from 'enzyme';
 import React from 'react';
-import UserPanel, { StyledPanel, passwordValidation } from './component';
+import UserPanel, { StyledInput, StyledPanel, passwordValidation } from './component';
 import store from '../store/store'
 
-jest.mock('../store/store', () => {
-    return { dispatch: jest.fn(), }
-});
+jest.mock('../store/store', () => ({ dispatch: jest.fn(), }));
 
 describe('UserPanel component', () => {
-    const onDoneClick = jest.fn();
+    const nextPanel = jest.fn();
     const preventDefault = jest.fn();
 
     afterEach(() => {
@@ -18,7 +16,7 @@ describe('UserPanel component', () => {
     test('component matches snapshot', () => {
         expect.assertions(1);
 
-        const wrapper = shallow(<UserPanel onDoneClick={onDoneClick} />);
+        const wrapper = shallow(<UserPanel nextPanel={nextPanel} />);
 
         expect(wrapper).toMatchSnapshot();
     });
@@ -26,12 +24,12 @@ describe('UserPanel component', () => {
     test('onSubmit updates the store with valid User object', () => {
         expect.assertions(3);
 
-        const wrapper = shallow(<UserPanel onDoneClick={onDoneClick} />);
+        const wrapper = shallow(<UserPanel nextPanel={nextPanel} />);
 
-        wrapper.find('input').at(0).simulate('change', { target: { value: 'Jack Hutchinson' } });
-        wrapper.find('input').at(1).simulate('change', { target: { value: 'Coder' } });
-        wrapper.find('input').at(2).simulate('change', { target: { value: 'email@email.com' } });
-        wrapper.find('input').at(3).simulate('change', { target: { value: 'ValidPassword123' } });
+        wrapper.find(StyledInput).at(0).simulate('change', { target: { value: 'Jack Hutchinson' } });
+        wrapper.find(StyledInput).at(1).simulate('change', { target: { value: 'Coder' } });
+        wrapper.find(StyledInput).at(2).simulate('change', { target: { value: 'email@email.com' } });
+        wrapper.find(StyledInput).at(3).simulate('change', { target: { value: 'ValidPassword123' } });
         wrapper.find(StyledPanel).props().onSubmit({ preventDefault });
 
         expect(store.dispatch).toHaveBeenCalledTimes(1);
@@ -44,18 +42,18 @@ describe('UserPanel component', () => {
             },
             type: "UPDATE_USER"
         });
-        expect(onDoneClick).toHaveBeenCalledTimes(1);
+        expect(nextPanel).toHaveBeenCalledTimes(1);
     });
 
     test('Store is updated with missing role', () => {
         expect.assertions(3);
 
-        const wrapper = shallow(<UserPanel onDoneClick={onDoneClick} />);
+        const wrapper = shallow(<UserPanel nextPanel={nextPanel} />);
 
-        wrapper.find('input').at(0).simulate('change', { target: { value: 'Jack Hutchinson' } });
-        wrapper.find('input').at(1).simulate('change', { target: { value: null } });
-        wrapper.find('input').at(2).simulate('change', { target: { value: 'email@email.com' } });
-        wrapper.find('input').at(3).simulate('change', { target: { value: 'ValidPassword123' } });
+        wrapper.find(StyledInput).at(0).simulate('change', { target: { value: 'Jack Hutchinson' } });
+        wrapper.find(StyledInput).at(1).simulate('change', { target: { value: null } });
+        wrapper.find(StyledInput).at(2).simulate('change', { target: { value: 'email@email.com' } });
+        wrapper.find(StyledInput).at(3).simulate('change', { target: { value: 'ValidPassword123' } });
         wrapper.find(StyledPanel).props().onSubmit({ preventDefault });
 
         expect(store.dispatch).toHaveBeenCalledTimes(1);
@@ -68,23 +66,23 @@ describe('UserPanel component', () => {
             },
             type: "UPDATE_USER"
         });
-        expect(onDoneClick).toHaveBeenCalledTimes(1);
+        expect(nextPanel).toHaveBeenCalledTimes(1);
     });
 
     test('Store is not updated when password is invalid', () => {
         expect.assertions(3);
 
-        const wrapper = shallow(<UserPanel onDoneClick={onDoneClick} />);
+        const wrapper = shallow(<UserPanel nextPanel={nextPanel} />);
 
-        wrapper.find('input').at(0).simulate('change', { target: { value: 'Jack Hutchinson' } });
-        wrapper.find('input').at(1).simulate('change', { target: { value: 'Coder' } });
-        wrapper.find('input').at(2).simulate('change', { target: { value: 'email@email.com' } });
-        wrapper.find('input').at(3).simulate('change', { target: { value: 'not_valid' } });
+        wrapper.find(StyledInput).at(0).simulate('change', { target: { value: 'Jack Hutchinson' } });
+        wrapper.find(StyledInput).at(1).simulate('change', { target: { value: 'Coder' } });
+        wrapper.find(StyledInput).at(2).simulate('change', { target: { value: 'email@email.com' } });
+        wrapper.find(StyledInput).at(3).simulate('change', { target: { value: 'not_valid' } });
         wrapper.find(StyledPanel).props().onSubmit({ preventDefault });
 
         expect(store.dispatch).toHaveBeenCalledTimes(0);
         expect(preventDefault).toHaveBeenCalledTimes(1);
-        expect(onDoneClick).toHaveBeenCalledTimes(0);
+        expect(nextPanel).toHaveBeenCalledTimes(0);
     });
 });
 
@@ -93,6 +91,7 @@ describe('Password validation checker', () => {
         password                                          | valid 
         ${'Password1'}                                    | ${true}        
         ${'password'}                                     | ${false}        
+        ${'password1'}                                    | ${false}        
         ${'123456789'}                                    | ${false}        
         ${'Pass1'}                                        | ${false}        
         ${'PASSWORD'}                                     | ${false}        

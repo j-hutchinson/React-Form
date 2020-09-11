@@ -1,6 +1,29 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`FormTabs component component matches snapshot 1`] = `
+exports[`FormTabs component component matches snapshot on Privacy panel 1`] = `
+<styled.div>
+  <styled.div
+    active={false}
+    key="User"
+  >
+    User
+  </styled.div>
+  <styled.div
+    active={true}
+    key="Privacy"
+  >
+    Privacy
+  </styled.div>
+  <styled.div
+    active={false}
+    key="Done"
+  >
+    Done
+  </styled.div>
+</styled.div>
+`;
+
+exports[`FormTabs component component matches snapshot on User panel 1`] = `
 <styled.div>
   <styled.div
     active={true}

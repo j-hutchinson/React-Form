@@ -2,14 +2,17 @@
 
 exports[`FormBody component component matches snapshot when Done is active 1`] = `
 <Fragment>
-  <DonePanel />
+  <DonePanel
+    key="Done"
+  />
 </Fragment>
 `;
 
 exports[`FormBody component component matches snapshot when Privacy is active 1`] = `
 <Fragment>
   <PrivacyPanel
-    onDoneClick={[Function]}
+    key="Privacy"
+    nextPanel={[Function]}
   />
 </Fragment>
 `;
@@ -17,7 +20,8 @@ exports[`FormBody component component matches snapshot when Privacy is active 1`
 exports[`FormBody component component matches snapshot when User is active 1`] = `
 <Fragment>
   <UserPanel
-    onDoneClick={[Function]}
+    key="User"
+    nextPanel={[Function]}
   />
 </Fragment>
 `;

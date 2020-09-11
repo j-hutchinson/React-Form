@@ -7,9 +7,7 @@ import PrivacyPanel from '../PrivacyPanel/component';
 import UserPanel from '../UserPanel/component';
 import store from '../store/store'
 
-jest.mock('../store/store', () => {
-    return { dispatch: jest.fn() }
-});
+jest.mock('../store/store', () => ({ dispatch: jest.fn(), }));
 
 describe('FormBody component', () => {
     afterEach(() => {
@@ -34,11 +32,11 @@ describe('FormBody component', () => {
         active               | component       | dispatched
         ${FormState.USER}    | ${UserPanel}    | ${{ page: "Privacy", type: "UPDATE_PAGE" }}
         ${FormState.PRIVACY} | ${PrivacyPanel} | ${{ page: "Done", type: "UPDATE_PAGE" }}
-    `('$active onDoneClick triggers next active panel', ({ active, component, dispatched }) => {
+    `('$active nextPanel triggers next active panel', ({ active, component, dispatched }) => {
         expect.assertions(2);
 
         const wrapper = shallow(<FormBody activePage={active} />);
-        wrapper.find(component).props().onDoneClick();
+        wrapper.find(component).props().nextPanel();
 
         expect(store.dispatch).toHaveBeenCalledTimes(1);
         expect(store.dispatch).toHaveBeenCalledWith(dispatched);

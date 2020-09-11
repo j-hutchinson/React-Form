@@ -9,11 +9,11 @@ const updatePage = (page: FormState): ActionType => {
 }
 
 const updatePrivacy = (privacy: PrivacySettings): ActionType => {
-    return { type: UPDATE_PRIVACY, privacy: {...privacy } };
+    return { type: UPDATE_PRIVACY, privacy: { ...privacy } };
 }
 
 const updateUser = (user: UserSettings): ActionType => {
-    return { type: UPDATE_USER, user: {...user } };
+    return { type: UPDATE_USER, user: { ...user } };
 }
 
 export {

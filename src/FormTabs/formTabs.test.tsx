@@ -4,7 +4,7 @@ import FormTabs, { StyledTab } from './component';
 import { FormState } from '../types';
 
 describe('FormTabs component', () => {
-    test('component matches snapshot', () => {
+    test('component matches snapshot on User panel', () => {
         expect.assertions(4);
 
         const wrapper = shallow(<FormTabs activePage={FormState.USER} />);
@@ -12,6 +12,16 @@ describe('FormTabs component', () => {
         expect(wrapper).toMatchSnapshot();
         expect(wrapper.find(StyledTab).at(0).props().active).toBe(true)
         expect(wrapper.find(StyledTab).at(1).props().active).toBe(false)
+        expect(wrapper.find(StyledTab).at(2).props().active).toBe(false)
+    });
+    test('component matches snapshot on Privacy panel', () => {
+        expect.assertions(4);
+
+        const wrapper = shallow(<FormTabs activePage={FormState.PRIVACY} />);
+
+        expect(wrapper).toMatchSnapshot();
+        expect(wrapper.find(StyledTab).at(0).props().active).toBe(false)
+        expect(wrapper.find(StyledTab).at(1).props().active).toBe(true)
         expect(wrapper.find(StyledTab).at(2).props().active).toBe(false)
     });
 });

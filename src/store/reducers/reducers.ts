@@ -15,13 +15,14 @@ const initialState: ReduxState = {
     }
 }
 
-function rootReducer(state = initialState, action: ActionType): ReduxState {
+const rootReducer = (state = initialState, action: ActionType): ReduxState => {
     switch(action.type) {
         case UPDATE_PAGE:
             return {
                 ...state,
                 page: action.page,
             };
+
         case UPDATE_PRIVACY:
             return {
                 ...state,
@@ -30,6 +31,7 @@ function rootReducer(state = initialState, action: ActionType): ReduxState {
                     communication: action.privacy.communication,
                 }
             };
+            
         case UPDATE_USER:
             return {
                 ...state,
