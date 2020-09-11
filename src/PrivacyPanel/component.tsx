@@ -55,19 +55,31 @@ const PrivacyPanel = ({ onDoneClick }: Props): JSX.Element => {
     const [activeUpdates, setUpdates] = useState<boolean>(false);
     const [activeComms, setComms] = useState<boolean>(false);
 
-    const onSubmit = () => {
+    const onSubmit = (): void => {
         store.dispatch(updatePrivacy({ updates: activeUpdates, communication: activeComms }));
         onDoneClick();
+    }
+
+    const onKeyDownUpdates = (ev): void => {
+        if (ev.keyCode === 13) {
+            setUpdates(!activeUpdates);
+        }
+    }
+
+    const onKeyDownComms = (ev): void => {
+        if (ev.keyCode === 13) {
+            setComms(!activeComms);
+        }
     }
 
     return (
         <StyledPanel onSubmit={onSubmit}>
             <StyledBoxContainer>
-                <StyledBox tabIndex={0} onClick={() => setUpdates(!activeUpdates)}>{activeUpdates && <ConfirmIcon />}</StyledBox>
+                <StyledBox tabIndex={0} onClick={() => setUpdates(!activeUpdates)} onKeyDown={onKeyDownUpdates}>{activeUpdates && <ConfirmIcon />}</StyledBox>
                 Receive updates about Tray.io product by email
             </StyledBoxContainer>
             <StyledBoxContainer>
-                <StyledBox tabIndex={0} onClick={() => setComms(!activeComms)}>{activeComms && <ConfirmIcon />}</StyledBox>
+                <StyledBox tabIndex={0} onClick={() => setComms(!activeComms)} onKeyDown={onKeyDownComms}>{activeComms && <ConfirmIcon />}</StyledBox>
                 Receive communcations by email from other products created by the Tray.io team
             </StyledBoxContainer>
             <StyledButtonWrapper>

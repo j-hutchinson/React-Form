@@ -20,7 +20,7 @@ const StyledForm = styled.div`
 `;
 
 const App = (): JSX.Element => {
-    const [activeStep, setActiveStep] = useState<FormState>(FormState.PRIVACY);
+    const [activeStep, setActiveStep] = useState<FormState>(FormState.USER);
 
     return (
         <StyledApp>

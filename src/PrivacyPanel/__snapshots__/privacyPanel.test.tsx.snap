@@ -7,6 +7,7 @@ exports[`PrivacyPanel component component matches snapshot 1`] = `
   <styled.div>
     <styled.div
       onClick={[Function]}
+      onKeyDown={[Function]}
       tabIndex={0}
     />
     Receive updates about Tray.io product by email
@@ -14,6 +15,7 @@ exports[`PrivacyPanel component component matches snapshot 1`] = `
   <styled.div>
     <styled.div
       onClick={[Function]}
+      onKeyDown={[Function]}
       tabIndex={0}
     />
     Receive communcations by email from other products created by the Tray.io team

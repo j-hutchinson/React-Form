@@ -5,10 +5,10 @@ exports[`App component component matches snapshot 1`] = `
   <Header />
   <styled.div>
     <FormTabs
-      activeStep="Privacy"
+      activeStep="User"
     />
     <FormBody
-      activeStep="Privacy"
+      activeStep="User"
       setActiveStep={[Function]}
     />
   </styled.div>
