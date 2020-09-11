@@ -3,11 +3,13 @@ import styled from 'styled-components';
 
 import FormBody from '../FormBody/component';
 import FormTabs from '../FormTabs/component';
+import Header from '../Header/component';
 import { FormState } from '../types'
 
 const StyledApp = styled.div`
-   display: flex;
-   margin-top: 100px;
+   display: grid;
+   grid-template-rows: min-content 1fr;
+   grid-gap: 20px;
 `;
 
 const StyledForm = styled.div`
@@ -18,10 +20,11 @@ const StyledForm = styled.div`
 `;
 
 const App = (): JSX.Element => {
-    const [activeStep, setActiveStep] = useState<FormState>(FormState.USER);
+    const [activeStep, setActiveStep] = useState<FormState>(FormState.PRIVACY);
 
     return (
         <StyledApp>
+            <Header />
             <StyledForm>
                 <FormTabs activeStep={activeStep} />
                 <FormBody

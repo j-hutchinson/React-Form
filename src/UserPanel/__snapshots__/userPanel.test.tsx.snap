@@ -58,7 +58,7 @@ exports[`UserPanel component component matches snapshot 1`] = `
     />
   </styled.label>
   <styled.div>
-    <input
+    <styled.input
       type="submit"
       value="Submit"
     />

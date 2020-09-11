@@ -5,7 +5,7 @@ Array [
   "
     background-color: white;
     border: 1px solid black;
-    font-size: 12px;
+    font-size: 16px;
     box-sizing: border-box;
     text-decoration: none;
     color: black;
@@ -14,4 +14,14 @@ Array [
 ]
 `;
 
-exports[`tokens minWidth 1`] = `"800px"`;
+exports[`tokens SubmitInputStyles 1`] = `
+Array [
+  "
+    background-color: #03fc28;
+    border-radius: 4px;
+    border: 1px solid black;
+    font-size: 14px; 
+    padding: 8px;
+",
+]
+`;

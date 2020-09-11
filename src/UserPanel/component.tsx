@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import styled from 'styled-components';
-import { PanelStyles } from '../css/tokens'
+import { PanelStyles, SubmitInputStyles } from '../css/tokens'
 import store from '../store/store'
 import { updateUser } from '../store/actions/actions';
 
@@ -24,9 +24,13 @@ const StyledButtonWrapper = styled.div`
     margin-right: 10px;
 `;
 
-const Asterisk = styled.div`
+const StyledAsterisk = styled.div`
     display: inline-block;
     color: red;
+`;
+
+const StyledSubmitInput = styled.input`
+   ${SubmitInputStyles};
 `;
 
 export const passwordValidation = (password: string): boolean => {
@@ -53,7 +57,7 @@ const UserPanel = ({ onDoneClick }: Props): JSX.Element => {
     return (
         <StyledPanel onSubmit={onSubmission}>
             <StyledLabel>
-                <div> Name: <Asterisk>*</Asterisk> </div>
+                <div> Name: <StyledAsterisk>*</StyledAsterisk> </div>
                 <input type="text" value={name} onChange={(ev) => setName(ev.target.value)} required />
             </StyledLabel>
             <StyledLabel>
@@ -61,16 +65,16 @@ const UserPanel = ({ onDoneClick }: Props): JSX.Element => {
                 <input type="text" value={title} onChange={(ev) => setTitle(ev.target.value)} />
             </StyledLabel>
             <StyledLabel>
-                <div> Email: <Asterisk>*</Asterisk> </div>
+                <div> Email: <StyledAsterisk>*</StyledAsterisk> </div>
                 <input type="email" value={email} onChange={(ev) => setEmail(ev.target.value)} required />
             </StyledLabel>
             <StyledLabel>
-                <div> Password: <Asterisk>*</Asterisk> </div>
+                <div> Password: <StyledAsterisk>*</StyledAsterisk> </div>
                 <input type="password" value={password} onChange={(ev) => setPassword(ev.target.value)} required />
             </StyledLabel>
             {error && <div>Invalid form entry, does your password contain more than 9 letters?</div>}
             <StyledButtonWrapper>
-                <input type="submit" value="Submit" />
+                <StyledSubmitInput type="submit" value="Submit" />
             </StyledButtonWrapper>
 
         </StyledPanel>

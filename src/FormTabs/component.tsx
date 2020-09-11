@@ -16,6 +16,7 @@ const StyledTab = styled.div<{ active: boolean }>`
     border: 1px solid black;
     padding: 10px 0;
     text-align: center;
+    font-size: 20px;
 `;
 
 const FormTabs = ({ activeStep }: Props): JSX.Element => (

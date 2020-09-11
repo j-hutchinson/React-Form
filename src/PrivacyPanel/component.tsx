@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import styled from 'styled-components';
-import { PanelStyles } from '../css/tokens'
+import { PanelStyles, SubmitInputStyles } from '../css/tokens'
 import store from '../store/store'
 import { updatePrivacy } from '../store/actions/actions';
 
@@ -19,8 +19,8 @@ export const StyledBox = styled.div`
     border-radius: 1px;
     padding: 4px 0 4px 2px;
     color: #737373;
-    background-color: white;
-    display: flex;
+    display: inline-block;
+    margin-right: 8px;
 
     :hover {
         border-color: #007398;
@@ -31,6 +31,18 @@ const StyledButtonWrapper = styled.div`
     display: flex;
     flex-direction: row-reverse;
     margin-right: 10px;
+`;
+
+const StyledBoxContainer = styled.div`
+    display: grid;
+    grid-template-columns: min-content 1fr;
+    grid-grap: 8px;
+    margin-bottom: 8px
+`;
+
+
+const StyledSubmitInput = styled.input`
+   ${SubmitInputStyles};
 `;
 
 const ConfirmIcon = () => (
@@ -50,16 +62,16 @@ const PrivacyPanel = ({ onDoneClick }: Props): JSX.Element => {
 
     return (
         <StyledPanel onSubmit={onSubmit}>
-            <div>
-                <StyledBox onClick={() => setUpdates(!activeUpdates)}>{activeUpdates && <ConfirmIcon />}</StyledBox>
+            <StyledBoxContainer>
+                <StyledBox tabIndex={0} onClick={() => setUpdates(!activeUpdates)}>{activeUpdates && <ConfirmIcon />}</StyledBox>
                 Receive updates about Tray.io product by email
-            </div>
-            <div>
-                <StyledBox onClick={() => setComms(!activeComms)}>{activeComms && <ConfirmIcon />}</StyledBox>
+            </StyledBoxContainer>
+            <StyledBoxContainer>
+                <StyledBox tabIndex={0} onClick={() => setComms(!activeComms)}>{activeComms && <ConfirmIcon />}</StyledBox>
                 Receive communcations by email from other products created by the Tray.io team
-            </div>
+            </StyledBoxContainer>
             <StyledButtonWrapper>
-                <input type="submit" value="Submit" />
+                <StyledSubmitInput type="submit" value="Submit" />
             </StyledButtonWrapper>
         </StyledPanel>
     );

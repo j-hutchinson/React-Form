@@ -2,12 +2,13 @@
 
 exports[`App component component matches snapshot 1`] = `
 <styled.div>
+  <Header />
   <styled.div>
     <FormTabs
-      activeStep="User"
+      activeStep="Privacy"
     />
     <FormBody
-      activeStep="User"
+      activeStep="Privacy"
       setActiveStep={[Function]}
     />
   </styled.div>

@@ -1,0 +1,11 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Header component component matches snapshot 1`] = `
+<styled.div>
+  <img
+    alt="Tray logo"
+    height="50px"
+    src="tray.png"
+  />
+</styled.div>
+`;
