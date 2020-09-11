@@ -2,7 +2,7 @@ import { UPDATE_PAGE, UPDATE_PRIVACY, UPDATE_USER } from '../actions/actions';
 import { ActionType, ReduxState, FormState } from '../../types'
 
 const initialState: ReduxState = {
-    page: FormState.DONE,
+    page: FormState.USER,
     user: {
         name: null,
         role: null,
