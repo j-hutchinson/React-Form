@@ -27,6 +27,8 @@ export const StyledBox = styled.div`
     }
 `;
 
+const StyledLabel = styled.div``;
+
 const StyledButtonWrapper = styled.div`
     display: flex;
     flex-direction: row-reverse;
@@ -75,12 +77,30 @@ const PrivacyPanel = ({ onDoneClick }: Props): JSX.Element => {
     return (
         <StyledPanel onSubmit={onSubmit}>
             <StyledBoxContainer>
-                <StyledBox tabIndex={0} onClick={() => setUpdates(!activeUpdates)} onKeyDown={onKeyDownUpdates}>{activeUpdates && <ConfirmIcon />}</StyledBox>
-                Receive updates about Tray.io product by email
+                <StyledBox
+                    tabIndex={0}
+                    onClick={() => setUpdates(!activeUpdates)}
+                    onKeyDown={onKeyDownUpdates}
+                    role="checkbox"
+                    aria-checked={activeUpdates}
+                    aria-labelledby="label-1"
+                >
+                    {activeUpdates && <ConfirmIcon />}
+                </StyledBox>
+                <StyledLabel id="label-1">Receive updates about Tray.io product by email</StyledLabel>
             </StyledBoxContainer>
             <StyledBoxContainer>
-                <StyledBox tabIndex={0} onClick={() => setComms(!activeComms)} onKeyDown={onKeyDownComms}>{activeComms && <ConfirmIcon />}</StyledBox>
-                Receive communcations by email from other products created by the Tray.io team
+                <StyledBox
+                    tabIndex={0}
+                    onClick={() => setComms(!activeComms)}
+                    onKeyDown={onKeyDownComms}
+                    aria-checked={activeComms}
+                    role="checkbox"
+                    aria-labelledby="label-2"
+                >
+                    {activeComms && <ConfirmIcon />}
+                </StyledBox>
+                <StyledLabel id="label-2">Receive communcations by email from other products created by the Tray.io team</StyledLabel>
             </StyledBoxContainer>
             <StyledButtonWrapper>
                 <StyledSubmitInput type="submit" value="Submit" />

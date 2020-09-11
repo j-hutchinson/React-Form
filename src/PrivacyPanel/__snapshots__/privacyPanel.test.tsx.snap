@@ -6,19 +6,33 @@ exports[`PrivacyPanel component component matches snapshot 1`] = `
 >
   <styled.div>
     <styled.div
+      aria-checked={false}
+      aria-labelledby="label-1"
       onClick={[Function]}
       onKeyDown={[Function]}
+      role="checkbox"
       tabIndex={0}
     />
-    Receive updates about Tray.io product by email
+    <styled.div
+      id="label-1"
+    >
+      Receive updates about Tray.io product by email
+    </styled.div>
   </styled.div>
   <styled.div>
     <styled.div
+      aria-checked={false}
+      aria-labelledby="label-2"
       onClick={[Function]}
       onKeyDown={[Function]}
+      role="checkbox"
       tabIndex={0}
     />
-    Receive communcations by email from other products created by the Tray.io team
+    <styled.div
+      id="label-2"
+    >
+      Receive communcations by email from other products created by the Tray.io team
+    </styled.div>
   </styled.div>
   <styled.div>
     <styled.input
