@@ -11,7 +11,7 @@ interface Props {
 }
 
 const FormBody = ({ activePage }: Props): JSX.Element => (
-    <div>
+    <>
         {activePage === FormState.USER && (
             <UserPanel onDoneClick={() => store.dispatch(updatePage(FormState.PRIVACY))} />
         )}
@@ -19,7 +19,7 @@ const FormBody = ({ activePage }: Props): JSX.Element => (
             <PrivacyPanel onDoneClick={() => store.dispatch(updatePage(FormState.DONE))} />
         )}
         {activePage === FormState.DONE && <DonePanel />}
-    </div>
+    </>
 )
 
 

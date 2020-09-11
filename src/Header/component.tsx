@@ -7,7 +7,7 @@ const StyledContainer = styled.div`
 
 const Header = (): JSX.Element => (
     <StyledContainer>
-        <img src={require("../tray.png")} alt="Tray logo" height="50px" />
+        <img src={require("./tray.png")} alt="Tray logo" height="50px" />
     </StyledContainer>
 );
 

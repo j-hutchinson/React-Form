@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { FormEvent, KeyboardEvent, useState } from 'react';
 import styled from 'styled-components';
 import { PanelStyles, SubmitInputStyles } from '../css/tokens'
 import store from '../store/store'
@@ -57,18 +57,19 @@ const PrivacyPanel = ({ onDoneClick }: Props): JSX.Element => {
     const [activeUpdates, setUpdates] = useState<boolean>(false);
     const [activeComms, setComms] = useState<boolean>(false);
 
-    const onSubmit = (): void => {
+    const onSubmit = (ev: FormEvent): void => {
+        ev.preventDefault();
         store.dispatch(updatePrivacy({ updates: activeUpdates, communication: activeComms }));
         onDoneClick();
     }
 
-    const onKeyDownUpdates = (ev): void => {
+    const onKeyDownUpdates = (ev: KeyboardEvent): void => {
         if (ev.keyCode === 13) {
             setUpdates(!activeUpdates);
         }
     }
 
-    const onKeyDownComms = (ev): void => {
+    const onKeyDownComms = (ev: KeyboardEvent): void => {
         if (ev.keyCode === 13) {
             setComms(!activeComms);
         }
@@ -83,11 +84,11 @@ const PrivacyPanel = ({ onDoneClick }: Props): JSX.Element => {
                     onKeyDown={onKeyDownUpdates}
                     role="checkbox"
                     aria-checked={activeUpdates}
-                    aria-labelledby="label-1"
+                    aria-labelledby="update-label"
                 >
                     {activeUpdates && <ConfirmIcon />}
                 </StyledBox>
-                <StyledLabel id="label-1">Receive updates about Tray.io product by email</StyledLabel>
+                <StyledLabel id="update-label">Receive updates about Tray.io product by email</StyledLabel>
             </StyledBoxContainer>
             <StyledBoxContainer>
                 <StyledBox
@@ -96,11 +97,11 @@ const PrivacyPanel = ({ onDoneClick }: Props): JSX.Element => {
                     onKeyDown={onKeyDownComms}
                     aria-checked={activeComms}
                     role="checkbox"
-                    aria-labelledby="label-2"
+                    aria-labelledby="communication-label"
                 >
                     {activeComms && <ConfirmIcon />}
                 </StyledBox>
-                <StyledLabel id="label-2">Receive communcations by email from other products created by the Tray.io team</StyledLabel>
+                <StyledLabel id="communication-label">Receive communcations by email from other products created by the Tray.io team</StyledLabel>
             </StyledBoxContainer>
             <StyledButtonWrapper>
                 <StyledSubmitInput type="submit" value="Submit" />

@@ -5,7 +5,11 @@ import styled from 'styled-components';
 import FormBody from '../FormBody/component';
 import FormTabs from '../FormTabs/component';
 import Header from '../Header/component';
-import { FormState } from '../types';
+import { FormState, ReduxState } from '../types';
+
+interface Props {
+    activePage: FormState;
+}
 
 const StyledApp = styled.div`
    display: grid;
@@ -20,10 +24,6 @@ const StyledForm = styled.div`
    margin: auto;
 `;
 
-interface Props {
-    activePage: FormState;
-}
-
 export const App = ({ activePage }: Props): JSX.Element => (
     <StyledApp>
         <Header />
@@ -34,7 +34,7 @@ export const App = ({ activePage }: Props): JSX.Element => (
     </StyledApp>
 );
 
-const mapStateToProps = state => ({
+const mapStateToProps = (state: ReduxState): Props => ({
     activePage: state.page
 })
 

@@ -5,6 +5,7 @@ import { formTabsList, FormState } from '../types';
 interface Props {
     activePage: FormState;
 }
+
 const StyledContainer = styled.div`
     display: grid;
     grid-template-columns: 1fr 1fr 1fr;

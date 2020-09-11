@@ -9,6 +9,7 @@ jest.mock('../store/store', () => {
 
 describe('PrivacyPanel component', () => {
     const onDoneClick = jest.fn();
+    const preventDefault = jest.fn();
 
     afterEach(() => {
         jest.resetAllMocks();
@@ -27,7 +28,7 @@ describe('PrivacyPanel component', () => {
 
         const wrapper = shallow(<PrivacyPanel onDoneClick={onDoneClick} />);
         wrapper.find(StyledBox).at(0).simulate('click');
-        wrapper.find(StyledPanel).props().onSubmit();
+        wrapper.find(StyledPanel).props().onSubmit({ preventDefault });
 
         expect(store.dispatch).toHaveBeenCalledTimes(1);
         expect(store.dispatch).toHaveBeenCalledWith({ privacy: { communication: false, updates: true }, type: "UPDATE_PRIVACY" });
@@ -39,7 +40,7 @@ describe('PrivacyPanel component', () => {
 
         const wrapper = shallow(<PrivacyPanel onDoneClick={onDoneClick} />);
         wrapper.find(StyledBox).at(0).simulate('keyDown', { keyCode: 13 });
-        wrapper.find(StyledPanel).props().onSubmit();
+        wrapper.find(StyledPanel).props().onSubmit({ preventDefault });
 
         expect(store.dispatch).toHaveBeenCalledTimes(1);
         expect(store.dispatch).toHaveBeenCalledWith({ privacy: { communication: false, updates: true }, type: "UPDATE_PRIVACY" });
@@ -50,7 +51,7 @@ describe('PrivacyPanel component', () => {
 
         const wrapper = shallow(<PrivacyPanel onDoneClick={onDoneClick} />);
         wrapper.find(StyledBox).at(0).simulate('keyDown', { keyCode: 27 });
-        wrapper.find(StyledPanel).props().onSubmit();
+        wrapper.find(StyledPanel).props().onSubmit({ preventDefault });
 
         expect(store.dispatch).toHaveBeenCalledTimes(1);
         expect(store.dispatch).toHaveBeenCalledWith({ privacy: { communication: false, updates: false }, type: "UPDATE_PRIVACY" });

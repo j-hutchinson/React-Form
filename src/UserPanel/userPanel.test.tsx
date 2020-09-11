@@ -32,7 +32,7 @@ describe('UserPanel component', () => {
         wrapper.find('input').at(1).simulate('change', { target: { value: 'Coder' } });
         wrapper.find('input').at(2).simulate('change', { target: { value: 'email@email.com' } });
         wrapper.find('input').at(3).simulate('change', { target: { value: 'ValidPassword123' } });
-        wrapper.find(StyledPanel).props().onSubmit();
+        wrapper.find(StyledPanel).props().onSubmit({ preventDefault });
 
         expect(store.dispatch).toHaveBeenCalledTimes(1);
         expect(store.dispatch).toHaveBeenCalledWith({
@@ -56,7 +56,7 @@ describe('UserPanel component', () => {
         wrapper.find('input').at(1).simulate('change', { target: { value: null } });
         wrapper.find('input').at(2).simulate('change', { target: { value: 'email@email.com' } });
         wrapper.find('input').at(3).simulate('change', { target: { value: 'ValidPassword123' } });
-        wrapper.find(StyledPanel).props().onSubmit();
+        wrapper.find(StyledPanel).props().onSubmit({ preventDefault });
 
         expect(store.dispatch).toHaveBeenCalledTimes(1);
         expect(store.dispatch).toHaveBeenCalledWith({

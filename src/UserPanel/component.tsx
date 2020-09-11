@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { FormEvent, useState } from 'react';
 import styled from 'styled-components';
 import { PanelStyles, SubmitInputStyles } from '../css/tokens'
 import store from '../store/store'
@@ -53,12 +53,12 @@ const UserPanel = ({ onDoneClick }: Props): JSX.Element => {
     const [password, setPassword] = useState<string>('');
     const [error, setError] = useState<boolean>(false);
 
-    const onSubmission = (ev) => {
+    const onSubmission = (ev: FormEvent): void => {
+        ev.preventDefault();
         if (passwordValidation(password)) {
             store.dispatch(updateUser({ name, role, email, password }));
             onDoneClick();
         } else {
-            ev.preventDefault();
             setError(true);
         }
     }
@@ -87,7 +87,6 @@ const UserPanel = ({ onDoneClick }: Props): JSX.Element => {
             <StyledButtonWrapper>
                 <StyledSubmitInput type="submit" value="Submit" />
             </StyledButtonWrapper>
-
         </StyledPanel>
     )
 };

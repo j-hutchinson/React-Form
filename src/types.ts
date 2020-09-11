@@ -1,4 +1,3 @@
-
 export enum FormState {
     USER = 'User',
     PRIVACY = 'Privacy',
@@ -7,10 +6,17 @@ export enum FormState {
 
 export const formTabsList = [FormState.USER, FormState.PRIVACY, FormState.DONE]
 
+export interface ActionType {
+    type: string;
+    page?: FormState;
+    privacy?: PrivacySettings;
+    user?: UserSettings;
+}
+
 export interface ReduxState {
+    page: FormState
     user: UserSettings;
     privacy: PrivacySettings;
-    page: FormState
 }
 
 export interface UserSettings {
@@ -23,11 +29,4 @@ export interface UserSettings {
 export interface PrivacySettings {
     updates: boolean;
     communication: boolean;
-}
-
-export interface ActionType {
-    type: string;
-    page?: FormState;
-    privacy?: PrivacySettings;
-    user?: UserSettings;
 }

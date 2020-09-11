@@ -7,14 +7,14 @@ exports[`PrivacyPanel component component matches snapshot 1`] = `
   <styled.div>
     <styled.div
       aria-checked={false}
-      aria-labelledby="label-1"
+      aria-labelledby="update-label"
       onClick={[Function]}
       onKeyDown={[Function]}
       role="checkbox"
       tabIndex={0}
     />
     <styled.div
-      id="label-1"
+      id="update-label"
     >
       Receive updates about Tray.io product by email
     </styled.div>
@@ -22,14 +22,14 @@ exports[`PrivacyPanel component component matches snapshot 1`] = `
   <styled.div>
     <styled.div
       aria-checked={false}
-      aria-labelledby="label-2"
+      aria-labelledby="communication-label"
       onClick={[Function]}
       onKeyDown={[Function]}
       role="checkbox"
       tabIndex={0}
     />
     <styled.div
-      id="label-2"
+      id="communication-label"
     >
       Receive communcations by email from other products created by the Tray.io team
     </styled.div>
