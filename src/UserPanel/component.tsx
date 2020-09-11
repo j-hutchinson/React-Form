@@ -72,7 +72,7 @@ const UserPanel = ({ onDoneClick }: Props): JSX.Element => {
                 <div> Password: <StyledAsterisk>*</StyledAsterisk> </div>
                 <input type="password" value={password} onChange={(ev) => setPassword(ev.target.value)} required />
             </StyledLabel>
-            {error && <div>Invalid form entry, does your password contain more than 9 letters?</div>}
+            {error && <div>Check your password is valid. Must contain 1 uppercase, 1 lowercase, 1 number and be longer than 9 characters</div>}
             <StyledButtonWrapper>
                 <StyledSubmitInput type="submit" value="Submit" />
             </StyledButtonWrapper>
