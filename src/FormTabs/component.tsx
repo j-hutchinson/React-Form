@@ -3,15 +3,14 @@ import styled from 'styled-components'
 import { formTabsList, FormState } from '../types';
 
 interface Props {
-    activeStep: FormState;
+    activePage: FormState;
 }
-
 const StyledContainer = styled.div`
     display: grid;
     grid-template-columns: 1fr 1fr 1fr;
 `;
 
-const StyledTab = styled.div<{ active: boolean }>`
+export const StyledTab = styled.div<{ active: boolean }>`
     background:  ${props => (props.active ? '#42daf5' : 'white')};
     border: 1px solid black;
     padding: 10px 0;
@@ -19,10 +18,10 @@ const StyledTab = styled.div<{ active: boolean }>`
     font-size: 20px;
 `;
 
-const FormTabs = ({ activeStep }: Props): JSX.Element => (
+const FormTabs = ({ activePage }: Props): JSX.Element => (
     <StyledContainer>
         {formTabsList.map(tab =>
-            <StyledTab active={activeStep === tab} key={tab}>
+            <StyledTab active={activePage === tab} key={tab}>
                 {tab}
             </StyledTab>
         )}

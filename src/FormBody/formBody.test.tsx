@@ -5,10 +5,13 @@ import { FormState } from '../types';
 import DonePanel from '../DonePanel/component';
 import PrivacyPanel from '../PrivacyPanel/component';
 import UserPanel from '../UserPanel/component';
+import store from '../store/store'
+
+jest.mock('../store/store', () => {
+    return { dispatch: jest.fn() }
+});
 
 describe('FormBody component', () => {
-    const setActiveStep = jest.fn();
-
     afterEach(() => {
         jest.resetAllMocks();
     })
@@ -21,25 +24,23 @@ describe('FormBody component', () => {
     `('component matches snapshot when $active is active', ({ active, component }) => {
         expect.assertions(2);
 
-        const wrapper = shallow(<FormBody activeStep={active} setActiveStep={setActiveStep} />);
+        const wrapper = shallow(<FormBody activePage={active} />);
 
         expect(wrapper).toMatchSnapshot();
         expect(wrapper.find(component).length).toBe(1);
     });
 
     test.each`
-        active               | component       | nextState
-        ${FormState.USER}    | ${UserPanel}    | ${FormState.PRIVACY}
-        ${FormState.PRIVACY} | ${PrivacyPanel} | ${FormState.DONE}
-    `('$active onDoneClick triggers next active panel', ({ active, component, nextState }) => {
+        active               | component       | dispatched
+        ${FormState.USER}    | ${UserPanel}    | ${{ page: "Privacy", type: "UPDATE_PAGE" }}
+        ${FormState.PRIVACY} | ${PrivacyPanel} | ${{ page: "Done", type: "UPDATE_PAGE" }}
+    `('$active onDoneClick triggers next active panel', ({ active, component, dispatched }) => {
         expect.assertions(2);
 
-        const wrapper = shallow(<FormBody activeStep={active} setActiveStep={setActiveStep} />);
+        const wrapper = shallow(<FormBody activePage={active} />);
         wrapper.find(component).props().onDoneClick();
 
-        expect(setActiveStep).toHaveBeenCalledTimes(1);
-        expect(setActiveStep).toHaveBeenCalledWith(nextState);
+        expect(store.dispatch).toHaveBeenCalledTimes(1);
+        expect(store.dispatch).toHaveBeenCalledWith(dispatched);
     });
-
-
 });

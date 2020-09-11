@@ -8,9 +8,13 @@ const StyledPanel = styled.div`
 `;
 
 const DonePanel = (): JSX.Element => {
-    console.log(store.getState())
+    const state = store.getState();
+    console.log(state.user, state.privacy);
+
     return (
-        <StyledPanel>Please verify your email address, you should have received an email from us today</StyledPanel>
+        <StyledPanel>
+            Please verify your email address, you should have received an email from us today
+        </StyledPanel>
     );
 }
 

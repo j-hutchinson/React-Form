@@ -29,6 +29,12 @@ const StyledAsterisk = styled.div`
     color: red;
 `;
 
+const StyledError = styled.div`
+    color: red;
+    font-size: 12px;
+    margin: 10px;
+`;
+
 const StyledSubmitInput = styled.input`
    ${SubmitInputStyles};
 `;
@@ -72,7 +78,9 @@ const UserPanel = ({ onDoneClick }: Props): JSX.Element => {
                 <div> Password: <StyledAsterisk>*</StyledAsterisk> </div>
                 <input type="password" value={password} onChange={(ev) => setPassword(ev.target.value)} required />
             </StyledLabel>
-            {error && <div>Check your password is valid. Must contain 1 uppercase, 1 lowercase, 1 number and be longer than 9 characters</div>}
+            {error && (
+                <StyledError>Check your password is valid. Must contain 1 uppercase, 1 lowercase, 1 number and be longer than 9 characters</StyledError>
+            )}
             <StyledButtonWrapper>
                 <StyledSubmitInput type="submit" value="Submit" />
             </StyledButtonWrapper>

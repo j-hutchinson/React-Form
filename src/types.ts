@@ -10,6 +10,7 @@ export const formTabsList = [FormState.USER, FormState.PRIVACY, FormState.DONE]
 export interface ReduxState {
     user: UserSettings;
     privacy: PrivacySettings;
+    page: FormState
 }
 
 export interface UserSettings {
@@ -26,6 +27,7 @@ export interface PrivacySettings {
 
 export interface ActionType {
     type: string;
+    page?: FormState;
     privacy?: PrivacySettings;
     user?: UserSettings;
 }

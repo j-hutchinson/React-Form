@@ -3,21 +3,22 @@ import DonePanel from '../DonePanel/component';
 import PrivacyPanel from '../PrivacyPanel/component';
 import UserPanel from '../UserPanel/component';
 import { FormState } from '../types';
+import store from '../store/store';
+import { updatePage } from '../store/actions/actions';
 
 interface Props {
-    activeStep: FormState;
-    setActiveStep: (key: FormState) => void;
+    activePage: FormState;
 }
 
-const FormBody = ({ activeStep, setActiveStep }: Props): JSX.Element => (
+const FormBody = ({ activePage }: Props): JSX.Element => (
     <div>
-        {activeStep === FormState.USER && (
-            <UserPanel onDoneClick={() => setActiveStep(FormState.PRIVACY)} />
+        {activePage === FormState.USER && (
+            <UserPanel onDoneClick={() => store.dispatch(updatePage(FormState.PRIVACY))} />
         )}
-        {activeStep === FormState.PRIVACY && (
-            <PrivacyPanel onDoneClick={() => setActiveStep(FormState.DONE)} />
+        {activePage === FormState.PRIVACY && (
+            <PrivacyPanel onDoneClick={() => store.dispatch(updatePage(FormState.DONE))} />
         )}
-        {activeStep === FormState.DONE && <DonePanel />}
+        {activePage === FormState.DONE && <DonePanel />}
     </div>
 )
 

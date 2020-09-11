@@ -1,10 +1,11 @@
-import React, { useState } from 'react';
+import React from 'react';
+import { connect } from 'react-redux';
 import styled from 'styled-components';
 
 import FormBody from '../FormBody/component';
 import FormTabs from '../FormTabs/component';
 import Header from '../Header/component';
-import { FormState } from '../types'
+import { FormState } from '../types';
 
 const StyledApp = styled.div`
    display: grid;
@@ -19,21 +20,22 @@ const StyledForm = styled.div`
    margin: auto;
 `;
 
-const App = (): JSX.Element => {
-    const [activeStep, setActiveStep] = useState<FormState>(FormState.USER);
+interface Props {
+    activePage: FormState;
+}
 
-    return (
-        <StyledApp>
-            <Header />
-            <StyledForm>
-                <FormTabs activeStep={activeStep} />
-                <FormBody
-                    activeStep={activeStep}
-                    setActiveStep={setActiveStep}
-                />
-            </StyledForm>
-        </StyledApp>
-    );
-};
+export const App = ({ activePage }: Props): JSX.Element => (
+    <StyledApp>
+        <Header />
+        <StyledForm>
+            <FormTabs activePage={activePage} />
+            <FormBody activePage={activePage} />
+        </StyledForm>
+    </StyledApp>
+);
 
-export default App;
+const mapStateToProps = state => ({
+    activePage: state.page
+})
+
+export default connect(mapStateToProps, null)(App);
