@@ -1,0 +1,21 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`FormTabs component component matches snapshot 1`] = `
+<styled.div>
+  <styled.div
+    active={true}
+  >
+    User
+  </styled.div>
+  <styled.div
+    active={false}
+  >
+    Privacy
+  </styled.div>
+  <styled.div
+    active={false}
+  >
+    Done
+  </styled.div>
+</styled.div>
+`;

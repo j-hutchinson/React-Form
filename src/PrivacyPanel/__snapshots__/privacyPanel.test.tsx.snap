@@ -1,0 +1,26 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`PrivacyPanel component component matches snapshot 1`] = `
+<styled.form
+  onSubmit={[Function]}
+>
+  <div>
+    <styled.div
+      onClick={[Function]}
+    />
+    Receive updates about Tray.io product by email
+  </div>
+  <div>
+    <styled.div
+      onClick={[Function]}
+    />
+    Receive communcations by email from other products created by the Tray.io team
+  </div>
+  <styled.div>
+    <input
+      type="submit"
+      value="Submit"
+    />
+  </styled.div>
+</styled.form>
+`;

@@ -1,0 +1,67 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`UserPanel component component matches snapshot 1`] = `
+<styled.form
+  onSubmit={[Function]}
+>
+  <styled.label>
+    <div>
+       Name: 
+      <styled.div>
+        *
+      </styled.div>
+       
+    </div>
+    <input
+      onChange={[Function]}
+      required={true}
+      type="text"
+      value=""
+    />
+  </styled.label>
+  <styled.label>
+    Title:
+    <input
+      onChange={[Function]}
+      type="text"
+      value=""
+    />
+  </styled.label>
+  <styled.label>
+    <div>
+       Email: 
+      <styled.div>
+        *
+      </styled.div>
+       
+    </div>
+    <input
+      onChange={[Function]}
+      required={true}
+      type="email"
+      value=""
+    />
+  </styled.label>
+  <styled.label>
+    <div>
+       Password: 
+      <styled.div>
+        *
+      </styled.div>
+       
+    </div>
+    <input
+      onChange={[Function]}
+      required={true}
+      type="password"
+      value=""
+    />
+  </styled.label>
+  <styled.div>
+    <input
+      type="submit"
+      value="Submit"
+    />
+  </styled.div>
+</styled.form>
+`;

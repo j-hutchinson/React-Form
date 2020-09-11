@@ -1,0 +1,64 @@
+{
+    "name": "tray",
+    "version": "0.1.0",
+    "private": true,
+    "dependencies": {
+        "@types/enzyme": "^3.10.6",
+        "@types/enzyme-adapter-react-16": "^1.0.3",
+        "@types/enzyme-to-json": "^1.5.3",
+        "@types/node": "14.6.4",
+        "@types/react": "^16.9.49",
+        "@types/react-dom": "16.9.1",
+        "@types/react-redux": "^7.1.9",
+        "@types/styled-components": "^5.1.3",
+        "enzyme": "^3.11.0",
+        "enzyme-adapter-react-16": "^1.15.4",
+        "enzyme-to-json": "^3.5.0",
+        "jest-styled-components": "^7.0.3",
+        "prettier": "^2.1.1",
+        "react": "^16.13.1",
+        "react-dom": "^16.13.1",
+        "react-redux": "^7.2.1",
+        "react-scripts": "3.4.3",
+        "react-test-renderer": "^16.13.1",
+        "redux": "^4.0.5",
+        "styled-components": "5.2.0",
+        "typescript": "4.0.2"
+    },
+    "scripts": {
+        "start": "react-scripts start",
+        "test": "react-scripts test"
+    },
+    "eslintConfig": {
+        "extends": "react-app"
+    },
+    "jest": {
+        "snapshotSerializers": [
+            "enzyme-to-json/serializer"
+        ]
+    },
+    "prettier": {
+        "bracketSpacing": true,
+        "printWidth": 100,
+        "semi": true,
+        "singleQuote": true,
+        "tabWidth": 4,
+        "trailingComma": "all",
+        "useTabs": false
+    },
+    "browserslist": {
+        "production": [
+            ">0.2%",
+            "not dead",
+            "not op_mini all"
+        ],
+        "development": [
+            "last 1 chrome version",
+            "last 1 firefox version",
+            "last 1 safari version"
+        ]
+    },
+    "devDependencies": {
+        "@types/jest": "^26.0.13"
+    }
+}

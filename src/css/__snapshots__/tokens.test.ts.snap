@@ -1,0 +1,17 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`tokens PanelStyles 1`] = `
+Array [
+  "
+    background-color: white;
+    border: 1px solid black;
+    font-size: 12px;
+    box-sizing: border-box;
+    text-decoration: none;
+    color: black;
+    padding: 20px;
+",
+]
+`;
+
+exports[`tokens minWidth 1`] = `"800px"`;
