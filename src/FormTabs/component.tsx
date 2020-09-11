@@ -12,7 +12,7 @@ interface TabProps {
 
 const StyledContainer = styled.div`
     display: grid;
-    grid-template-columns: 1fr 1fr 1fr;
+    grid-template-columns: repeat(${formItems.length}, 1fr);
 `;
 
 export const StyledTab = styled.div<TabProps>`
