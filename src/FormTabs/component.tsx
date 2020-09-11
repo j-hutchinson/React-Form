@@ -1,6 +1,6 @@
 import React from 'react';
 import styled from 'styled-components'
-import { FormState } from '../types';
+import { formTabsList, FormState } from '../types';
 
 interface Props {
     activeStep: FormState;
@@ -21,15 +21,11 @@ const StyledTab = styled.div<{ active: boolean }>`
 
 const FormTabs = ({ activeStep }: Props): JSX.Element => (
     <StyledContainer>
-        <StyledTab active={activeStep === FormState.USER}>
-            {FormState.USER}
-        </StyledTab>
-        <StyledTab active={activeStep === FormState.PRIVACY}>
-            {FormState.PRIVACY}
-        </StyledTab>
-        <StyledTab active={activeStep === FormState.DONE}>
-            {FormState.DONE}
-        </StyledTab>
+        {formTabsList.map(tab =>
+            <StyledTab active={activeStep === tab} key={tab}>
+                {tab}
+            </StyledTab>
+        )}
     </StyledContainer>
 );
 

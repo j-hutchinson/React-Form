@@ -5,6 +5,8 @@ export enum FormState {
     DONE = 'Done',
 }
 
+export const formTabsList = [FormState.USER, FormState.PRIVACY, FormState.DONE]
+
 export interface ReduxState {
     user: UserSettings;
     privacy: PrivacySettings;

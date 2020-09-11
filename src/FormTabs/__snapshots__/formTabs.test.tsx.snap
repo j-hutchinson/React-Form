@@ -4,16 +4,19 @@ exports[`FormTabs component component matches snapshot 1`] = `
 <styled.div>
   <styled.div
     active={true}
+    key="User"
   >
     User
   </styled.div>
   <styled.div
     active={false}
+    key="Privacy"
   >
     Privacy
   </styled.div>
   <styled.div
     active={false}
+    key="Done"
   >
     Done
   </styled.div>
