@@ -8,7 +8,6 @@ export const formItems = [FormState.USER, FormState.PRIVACY, FormState.DONE];
 
 export interface ActionType {
     type: string;
-    page?: FormState;
     privacy?: PrivacySettings;
     user?: UserSettings;
 }

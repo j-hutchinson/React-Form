@@ -1,15 +1,13 @@
-import { updatePage, updatePrivacy, updateUser } from './actions'
-import { FormState } from '../../types';
+import { nextPage, updatePrivacy, updateUser } from './actions'
 
 describe('actions', () => {
-    test('updatePage', () => {
+    test('nextPage', () => {
         expect.assertions(1);
 
-        const res = updatePage(FormState.DONE);
+        const res = nextPage();
 
         expect(res).toStrictEqual({ 
-            type: "UPDATE_PAGE",
-            page: FormState.DONE
+            type: "NEXT_PAGE",
         });
     });
     test('updatePrivacy', () => {
@@ -22,7 +20,7 @@ describe('actions', () => {
             privacy: {
                 communication: false,
                 updates: true,
-            }});
+        }});
     });
     test('updateUser', () => {
         expect.assertions(1);
@@ -36,7 +34,6 @@ describe('actions', () => {
                 role: 'Coder',
                 email: 'email@hotmail.com',
                 password: 'password123',
-            }});
+        }});
     });
-    
 });

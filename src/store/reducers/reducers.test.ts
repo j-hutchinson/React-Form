@@ -1,5 +1,5 @@
 import rootReducer from './reducers'
-import { UPDATE_PAGE, UPDATE_PRIVACY, UPDATE_USER } from '../actions/actions';
+import { NEXT_PAGE, UPDATE_PRIVACY, UPDATE_USER } from '../actions/actions';
 import { FormState } from '../../types';
 
 describe('actions', () => {
@@ -17,13 +17,13 @@ describe('actions', () => {
         }
     };
 
-    test('state is updated with UPDATE_PAGE action', () => {
+    test('state is updated with NEXT_PAGE action', () => {
         expect.assertions(1);
 
-        const res = rootReducer(initialState, { type: UPDATE_PAGE, page: FormState.DONE });
+        const res = rootReducer(initialState, { type: NEXT_PAGE });
 
         expect(res).toStrictEqual({ 
-            page: FormState.DONE,
+            page: FormState.PRIVACY,
             user: {
                 name: null,
                 role: null,

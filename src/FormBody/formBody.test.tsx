@@ -29,16 +29,16 @@ describe('FormBody component', () => {
     });
 
     test.each`
-        active               | component       | dispatched
-        ${FormState.USER}    | ${UserPanel}    | ${{ page: "Privacy", type: "UPDATE_PAGE" }}
-        ${FormState.PRIVACY} | ${PrivacyPanel} | ${{ page: "Done", type: "UPDATE_PAGE" }}
-    `('$active nextPanel triggers next active panel', ({ active, component, dispatched }) => {
+        active               | component       
+        ${FormState.USER}    | ${UserPanel}    
+        ${FormState.PRIVACY} | ${PrivacyPanel} 
+    `('$active nextPanel triggers next active panel', ({ active, component }) => {
         expect.assertions(2);
 
         const wrapper = shallow(<FormBody activePage={active} />);
         wrapper.find(component).props().nextPanel();
 
         expect(store.dispatch).toHaveBeenCalledTimes(1);
-        expect(store.dispatch).toHaveBeenCalledWith(dispatched);
+        expect(store.dispatch).toHaveBeenCalledWith({ type: "NEXT_PAGE" });
     });
 });

@@ -1,5 +1,5 @@
-import { UPDATE_PAGE, UPDATE_PRIVACY, UPDATE_USER } from '../actions/actions';
-import { ActionType, ReduxState, FormState } from '../../types'
+import { NEXT_PAGE, UPDATE_PRIVACY, UPDATE_USER } from '../actions/actions';
+import { ActionType, ReduxState, FormState, formItems } from '../../types'
 
 const initialState: ReduxState = {
     page: FormState.USER,
@@ -17,10 +17,10 @@ const initialState: ReduxState = {
 
 const rootReducer = (state = initialState, action: ActionType): ReduxState => {
     switch(action.type) {
-        case UPDATE_PAGE:
+        case NEXT_PAGE:
             return {
                 ...state,
-                page: action.page,
+                page: formItems[formItems.indexOf(state.page) + 1],
             };
 
         case UPDATE_PRIVACY:

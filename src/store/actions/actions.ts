@@ -1,11 +1,11 @@
-import { ActionType, UserSettings, PrivacySettings, FormState } from "../../types";
+import { ActionType, UserSettings, PrivacySettings } from "../../types";
 
-const UPDATE_PAGE = 'UPDATE_PAGE';
+const NEXT_PAGE = 'NEXT_PAGE';
 const UPDATE_PRIVACY = 'UPDATE_PRIVACY';
 const UPDATE_USER = 'UPDATE_USER';
 
-const updatePage = (page: FormState): ActionType => {
-    return { type: UPDATE_PAGE, page };
+const nextPage = (): ActionType => {
+    return { type: NEXT_PAGE };
 }
 
 const updatePrivacy = (privacy: PrivacySettings): ActionType => {
@@ -17,10 +17,10 @@ const updateUser = (user: UserSettings): ActionType => {
 }
 
 export {
-    UPDATE_PAGE,
+    NEXT_PAGE,
     UPDATE_PRIVACY,
     UPDATE_USER,
-    updatePage,
+    nextPage,
     updatePrivacy,
     updateUser
 }
