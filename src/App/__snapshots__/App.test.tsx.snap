@@ -4,12 +4,8 @@ exports[`App component component matches snapshot 1`] = `
 <styled.div>
   <Header />
   <styled.div>
-    <FormTabs
-      activePage="User"
-    />
-    <FormBody
-      activePage="User"
-    />
+    <Connect(FormTabs) />
+    <Connect(FormBody) />
   </styled.div>
 </styled.div>
 `;

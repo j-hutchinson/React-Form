@@ -1,12 +1,8 @@
 import React, { FormEvent, KeyboardEvent, useState } from 'react';
 import styled from 'styled-components';
 import { PanelStyles, SubmitInputStyles } from '../css/tokens';
-import { updatePrivacy } from '../store/actions/actions';
+import { nextPage, updatePrivacy } from '../store/actions/actions';
 import store from '../store/store';
-
-interface Props {
-    nextPanel: () => void;
-}
 
 export const StyledPanel = styled.form`
     ${PanelStyles};
@@ -55,24 +51,27 @@ const ConfirmIcon = () => (
     </svg>
 );
 
-const PrivacyPanel = ({ nextPanel }: Props): JSX.Element => {
+const PrivacyPanel = (): JSX.Element => {
     const [activeUpdates, setUpdates] = useState<boolean>(false);
     const [activeComms, setComms] = useState<boolean>(false);
 
     const onSubmit = (ev: FormEvent): void => {
         ev.preventDefault();
         store.dispatch(updatePrivacy({ updates: activeUpdates, communication: activeComms }));
-        nextPanel();
-    }
+        store.dispatch(nextPage());
+    };
 
     const onKeyDownUpdates = (ev: KeyboardEvent): void => {
-        if (ev.keyCode === 13) setUpdates(!activeUpdates)
-    }
+        if (ev.key === 'Enter') {
+            setUpdates(!activeUpdates);
+        }
+    };
 
     const onKeyDownComms = (ev: KeyboardEvent): void => {
-        if (ev.keyCode === 13) setComms(!activeComms)
-
-    }
+        if (ev.key === 'Enter') {
+            setComms(!activeComms);
+        }
+    };
 
     return (
         <StyledPanel onSubmit={onSubmit}>

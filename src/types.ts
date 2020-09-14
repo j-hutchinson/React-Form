@@ -13,16 +13,16 @@ export interface ActionType {
 }
 
 export interface ReduxState {
-    page: FormState
+    page: FormState;
     user: UserSettings;
     privacy: PrivacySettings;
 }
 
 export interface UserSettings {
-    name: string;
-    role: string;
-    email: string;
-    password: string
+    name: string | null;
+    role: string | null;
+    email: string | null;
+    password: string | null;
 }
 
 export interface PrivacySettings {

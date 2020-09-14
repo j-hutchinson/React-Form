@@ -1,14 +1,8 @@
 import React from 'react';
-import { connect } from 'react-redux';
 import styled from 'styled-components';
 import FormBody from '../FormBody/component';
 import FormTabs from '../FormTabs/component';
 import Header from '../Header/component';
-import { FormState, ReduxState } from '../types';
-
-interface Props {
-    activePage: FormState;
-}
 
 const StyledApp = styled.div`
    display: grid;
@@ -23,18 +17,15 @@ const StyledForm = styled.div`
    margin: auto;
 `;
 
-export const App = ({ activePage }: Props): JSX.Element => (
+const App = (): JSX.Element => (
     <StyledApp>
         <Header />
         <StyledForm>
-            <FormTabs activePage={activePage} />
-            <FormBody activePage={activePage} />
+            <FormTabs />
+            <FormBody />
         </StyledForm>
     </StyledApp>
 );
 
-export const mapStateToProps = (state: ReduxState): Props => ({
-    activePage: state.page
-})
 
-export default connect(mapStateToProps, null)(App);
+export default App;

@@ -1,5 +1,5 @@
 import { NEXT_PAGE, UPDATE_PRIVACY, UPDATE_USER } from '../actions/actions';
-import { ActionType, ReduxState, FormState, formItems } from '../../types'
+import { ActionType, ReduxState, FormState, formItems } from '../../types';
 
 const initialState: ReduxState = {
     page: FormState.USER,
@@ -12,11 +12,11 @@ const initialState: ReduxState = {
     privacy: {
         updates: false,
         communication: false,
-    }
-}
+    },
+};
 
 const rootReducer = (state = initialState, action: ActionType): ReduxState => {
-    switch(action.type) {
+    switch (action.type) {
         case NEXT_PAGE:
             return {
                 ...state,
@@ -29,9 +29,9 @@ const rootReducer = (state = initialState, action: ActionType): ReduxState => {
                 privacy: {
                     updates: action.privacy.updates,
                     communication: action.privacy.communication,
-                }
+                },
             };
-            
+
         case UPDATE_USER:
             return {
                 ...state,
@@ -40,12 +40,12 @@ const rootReducer = (state = initialState, action: ActionType): ReduxState => {
                     role: action.user.role,
                     email: action.user.email,
                     password: action.user.password,
-                }
+                },
             };
 
         default:
             return state;
-  };
-}
+    }
+};
 
 export default rootReducer;

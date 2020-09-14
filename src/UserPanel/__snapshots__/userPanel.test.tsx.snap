@@ -4,59 +4,73 @@ exports[`UserPanel component component matches snapshot 1`] = `
 <styled.form
   onSubmit={[Function]}
 >
-  <styled.label>
-    <div>
+  <styled.div>
+    <label
+      htmlFor="name"
+    >
        Name: 
       <styled.div>
         *
       </styled.div>
        
-    </div>
+    </label>
     <styled.input
+      id="name"
       onChange={[Function]}
       required={true}
       type="text"
       value=""
     />
-  </styled.label>
-  <styled.label>
-    Role:
+  </styled.div>
+  <styled.div>
+    <label
+      htmlFor="role"
+    >
+      Role:
+    </label>
     <styled.input
+      id="role"
       onChange={[Function]}
       type="text"
       value=""
     />
-  </styled.label>
-  <styled.label>
-    <div>
+  </styled.div>
+  <styled.div>
+    <label
+      htmlFor="email"
+    >
        Email: 
       <styled.div>
         *
       </styled.div>
        
-    </div>
+    </label>
     <styled.input
+      id="email"
       onChange={[Function]}
       required={true}
       type="email"
       value=""
     />
-  </styled.label>
-  <styled.label>
-    <div>
+  </styled.div>
+  <styled.div>
+    <label
+      htmlFor="password"
+    >
        Password: 
       <styled.div>
         *
       </styled.div>
        
-    </div>
+    </label>
     <styled.input
+      id="password"
       onChange={[Function]}
       required={true}
       type="password"
       value=""
     />
-  </styled.label>
+  </styled.div>
   <styled.div>
     <styled.input
       type="submit"

@@ -1,18 +1,14 @@
 import React, { FormEvent, useState } from 'react';
 import styled from 'styled-components';
 import { PanelStyles, SubmitInputStyles } from '../css/tokens';
-import { updateUser } from '../store/actions/actions';
+import { nextPage, updateUser } from '../store/actions/actions';
 import store from '../store/store';
-
-interface Props {
-    nextPanel: () => void;
-}
 
 export const StyledPanel = styled.form`
     ${PanelStyles}
 `;
 
-const StyledLabel = styled.label`
+const StyledItem = styled.div`
     display: grid;
     grid-template-rows: min-content 1fr;
     grid-gap: 4px;
@@ -32,8 +28,9 @@ const StyledAsterisk = styled.div`
 
 const StyledError = styled.div`
     color: red;
-    font-size: 12px;
+    font-size: 14px;
     margin: 10px;
+    font-weight: bold
 `;
 
 const StyledSubmitInput = styled.input`
@@ -52,7 +49,7 @@ export const passwordValidation = (password: string): boolean => {
     return /\d/.test(password) && /[a-z]/.test(password) && /[A-Z]/.test(password) && password.length >= 9
 }
 
-const UserPanel = ({ nextPanel }: Props): JSX.Element => {
+const UserPanel = (): JSX.Element => {
     const [name, setName] = useState<string>('');
     const [role, setRole] = useState<string>('');
     const [email, setEmail] = useState<string>('');
@@ -63,7 +60,7 @@ const UserPanel = ({ nextPanel }: Props): JSX.Element => {
         ev.preventDefault();
         if (passwordValidation(password)) {
             store.dispatch(updateUser({ name, role, email, password }));
-            nextPanel();
+            store.dispatch(nextPage());
         } else {
             setError(true);
         }
@@ -71,24 +68,26 @@ const UserPanel = ({ nextPanel }: Props): JSX.Element => {
 
     return (
         <StyledPanel onSubmit={onSubmission}>
-            <StyledLabel>
-                <div> Name: <StyledAsterisk>*</StyledAsterisk> </div>
-                <StyledInput type="text" value={name} onChange={(ev) => setName(ev.target.value)} required />
-            </StyledLabel>
-            <StyledLabel>
-                Role:
-                <StyledInput type="text" value={role} onChange={(ev) => setRole(ev.target.value)} />
-            </StyledLabel>
-            <StyledLabel>
-                <div> Email: <StyledAsterisk>*</StyledAsterisk> </div>
-                <StyledInput type="email" value={email} onChange={(ev) => setEmail(ev.target.value)} required />
-            </StyledLabel>
-            <StyledLabel>
-                <div> Password: <StyledAsterisk>*</StyledAsterisk> </div>
-                <StyledInput type="password" value={password} onChange={(ev) => setPassword(ev.target.value)} required />
-            </StyledLabel>
+            <StyledItem>
+                <label htmlFor="name"> Name: <StyledAsterisk>*</StyledAsterisk> </label>
+                <StyledInput id="name" type="text" value={name} onChange={(ev) => setName(ev.target.value)} required />
+            </StyledItem>
+            <StyledItem>
+                <label htmlFor="role">Role:</label>
+                <StyledInput id="role" type="text" value={role} onChange={(ev) => setRole(ev.target.value)} />
+            </StyledItem>
+            <StyledItem>
+                <label htmlFor="email"> Email: <StyledAsterisk>*</StyledAsterisk> </label>
+                <StyledInput id="email" type="email" value={email} onChange={(ev) => setEmail(ev.target.value)} required />
+            </StyledItem>
+            <StyledItem>
+                <label htmlFor="password"> Password: <StyledAsterisk>*</StyledAsterisk> </label>
+                <StyledInput id="password" type="password" value={password} onChange={(ev) => setPassword(ev.target.value)} required />
+            </StyledItem>
             {error && (
-                <StyledError>Check your password is valid. Must contain 1 uppercase, 1 lowercase, 1 number and be longer than 9 characters</StyledError>
+                <StyledError>
+                    Check your password is valid. Must contain 1 uppercase, 1 lowercase, 1 number and be longer than 9 characters
+                </StyledError>
             )}
             <StyledButtonWrapper>
                 <StyledSubmitInput type="submit" value="Submit" />

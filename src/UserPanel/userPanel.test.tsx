@@ -6,7 +6,6 @@ import store from '../store/store'
 jest.mock('../store/store', () => ({ dispatch: jest.fn(), }));
 
 describe('UserPanel component', () => {
-    const nextPanel = jest.fn();
     const preventDefault = jest.fn();
 
     afterEach(() => {
@@ -16,7 +15,7 @@ describe('UserPanel component', () => {
     test('component matches snapshot', () => {
         expect.assertions(1);
 
-        const wrapper = shallow(<UserPanel nextPanel={nextPanel} />);
+        const wrapper = shallow(<UserPanel />);
 
         expect(wrapper).toMatchSnapshot();
     });
@@ -24,7 +23,7 @@ describe('UserPanel component', () => {
     test('onSubmit updates the store with valid User object', () => {
         expect.assertions(3);
 
-        const wrapper = shallow(<UserPanel nextPanel={nextPanel} />);
+        const wrapper = shallow(<UserPanel />);
 
         wrapper.find(StyledInput).at(0).simulate('change', { target: { value: 'Jack Hutchinson' } });
         wrapper.find(StyledInput).at(1).simulate('change', { target: { value: 'Coder' } });
@@ -32,7 +31,7 @@ describe('UserPanel component', () => {
         wrapper.find(StyledInput).at(3).simulate('change', { target: { value: 'ValidPassword123' } });
         wrapper.find(StyledPanel).props().onSubmit({ preventDefault });
 
-        expect(store.dispatch).toHaveBeenCalledTimes(1);
+        expect(store.dispatch).toHaveBeenCalledTimes(2);
         expect(store.dispatch).toHaveBeenCalledWith({
             user: {
                 name: 'Jack Hutchinson',
@@ -42,13 +41,13 @@ describe('UserPanel component', () => {
             },
             type: "UPDATE_USER"
         });
-        expect(nextPanel).toHaveBeenCalledTimes(1);
+        expect(store.dispatch).toHaveBeenCalledWith({ type: "NEXT_PAGE" });
     });
 
     test('Store is updated with missing role', () => {
         expect.assertions(3);
 
-        const wrapper = shallow(<UserPanel nextPanel={nextPanel} />);
+        const wrapper = shallow(<UserPanel />);
 
         wrapper.find(StyledInput).at(0).simulate('change', { target: { value: 'Jack Hutchinson' } });
         wrapper.find(StyledInput).at(1).simulate('change', { target: { value: null } });
@@ -56,7 +55,7 @@ describe('UserPanel component', () => {
         wrapper.find(StyledInput).at(3).simulate('change', { target: { value: 'ValidPassword123' } });
         wrapper.find(StyledPanel).props().onSubmit({ preventDefault });
 
-        expect(store.dispatch).toHaveBeenCalledTimes(1);
+        expect(store.dispatch).toHaveBeenCalledTimes(2);
         expect(store.dispatch).toHaveBeenCalledWith({
             user: {
                 name: 'Jack Hutchinson',
@@ -66,13 +65,13 @@ describe('UserPanel component', () => {
             },
             type: "UPDATE_USER"
         });
-        expect(nextPanel).toHaveBeenCalledTimes(1);
+        expect(store.dispatch).toHaveBeenCalledWith({ type: "NEXT_PAGE" });
     });
 
     test('Store is not updated when password is invalid', () => {
-        expect.assertions(3);
+        expect.assertions(2);
 
-        const wrapper = shallow(<UserPanel nextPanel={nextPanel} />);
+        const wrapper = shallow(<UserPanel />);
 
         wrapper.find(StyledInput).at(0).simulate('change', { target: { value: 'Jack Hutchinson' } });
         wrapper.find(StyledInput).at(1).simulate('change', { target: { value: 'Coder' } });
@@ -82,7 +81,6 @@ describe('UserPanel component', () => {
 
         expect(store.dispatch).toHaveBeenCalledTimes(0);
         expect(preventDefault).toHaveBeenCalledTimes(1);
-        expect(nextPanel).toHaveBeenCalledTimes(0);
     });
 });
 

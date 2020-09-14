@@ -12,7 +12,6 @@ exports[`FormBody component component matches snapshot when Privacy is active 1`
 <Fragment>
   <PrivacyPanel
     key="Privacy"
-    nextPanel={[Function]}
   />
 </Fragment>
 `;
@@ -21,7 +20,6 @@ exports[`FormBody component component matches snapshot when User is active 1`] =
 <Fragment>
   <UserPanel
     key="User"
-    nextPanel={[Function]}
   />
 </Fragment>
 `;

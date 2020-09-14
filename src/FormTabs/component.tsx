@@ -1,6 +1,7 @@
 import React from 'react';
+import { connect } from 'react-redux';
 import styled from 'styled-components';
-import { FormState, formItems } from '../types';
+import { FormState, formItems, ReduxState } from '../types';
 
 interface Props {
     activePage: FormState;
@@ -24,7 +25,7 @@ export const StyledTab = styled.div<TabProps>`
     font-size: 20px;
 `;
 
-const FormTabs = ({ activePage }: Props): JSX.Element => (
+export const FormTabs = ({ activePage }: Props): JSX.Element => (
     <StyledContainer>
         {formItems.map(tab =>
             <StyledTab active={activePage === tab} key={tab}>
@@ -34,4 +35,8 @@ const FormTabs = ({ activePage }: Props): JSX.Element => (
     </StyledContainer>
 );
 
-export default FormTabs;
+export const mapStateToProps = (state: ReduxState): Props => ({
+    activePage: state.page
+})
+
+export default connect(mapStateToProps, null)(FormTabs);
