@@ -2,7 +2,7 @@ import React from 'react';
 import { connect } from 'react-redux';
 import DonePanel from '../DonePanel/component';
 import PrivacyPanel from '../PrivacyPanel/component';
-import { FormState, formItems, ReduxState } from '../types';
+import { FormState, ReduxState } from '../types';
 import UserPanel from '../UserPanel/component';
 
 interface Props {
@@ -15,11 +15,7 @@ const componentMapper = {
     [FormState.DONE]: <DonePanel key={FormState.DONE} />
 }
 
-export const FormBody = ({ activePage }: Props): JSX.Element => (
-    <>
-        {formItems.map(item => activePage === item && componentMapper[item])}
-    </>
-);
+export const FormBody = ({ activePage }: Props): JSX.Element => componentMapper[activePage];
 
 export const mapStateToProps = (state: ReduxState): Props => ({
     activePage: state.page

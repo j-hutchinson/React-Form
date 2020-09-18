@@ -1,25 +1,19 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`FormBody component component matches snapshot when Done is active 1`] = `
-<Fragment>
-  <DonePanel
-    key="Done"
-  />
-</Fragment>
+<DonePanel
+  key="Done"
+/>
 `;
 
 exports[`FormBody component component matches snapshot when Privacy is active 1`] = `
-<Fragment>
-  <PrivacyPanel
-    key="Privacy"
-  />
-</Fragment>
+<PrivacyPanel
+  key="Privacy"
+/>
 `;
 
 exports[`FormBody component component matches snapshot when User is active 1`] = `
-<Fragment>
-  <UserPanel
-    key="User"
-  />
-</Fragment>
+<UserPanel
+  key="User"
+/>
 `;

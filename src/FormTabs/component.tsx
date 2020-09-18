@@ -16,7 +16,7 @@ const StyledContainer = styled.div`
     grid-template-columns: repeat(${formItems.length}, 1fr);
 `;
 
-export const StyledTab = styled.div<TabProps>`
+const StyledTab = styled.div<TabProps>`
     background:  ${props => (props.active ? '#42daf5' : 'white')};
     font-weight:  ${props => (props.active ? 'bold' : 'normal')};
     border: 1px solid black;
@@ -25,7 +25,7 @@ export const StyledTab = styled.div<TabProps>`
     font-size: 20px;
 `;
 
-export const FormTabs = ({ activePage }: Props): JSX.Element => (
+const FormTabs = ({ activePage }: Props): JSX.Element => (
     <StyledContainer>
         {formItems.map(tab =>
             <StyledTab active={activePage === tab} key={tab}>
@@ -35,8 +35,16 @@ export const FormTabs = ({ activePage }: Props): JSX.Element => (
     </StyledContainer>
 );
 
-export const mapStateToProps = (state: ReduxState): Props => ({
+const mapStateToProps = (state: ReduxState): Props => ({
     activePage: state.page
-})
+});
 
-export default connect(mapStateToProps, null)(FormTabs);
+const ReduxFormTabs = connect(mapStateToProps, null)(FormTabs);
+export default ReduxFormTabs;
+
+// test exports 
+export {
+    mapStateToProps,
+    StyledTab,
+    FormTabs
+}
